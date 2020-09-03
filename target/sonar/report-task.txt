@@ -1,0 +1,6 @@
+projectKey=java-app
+serverUrl=http://a8412d93f8231484e846162e8cb7d17c-1964955021.us-east-1.elb.amazonaws.com
+serverVersion=8.4.2.36762
+dashboardUrl=http://a8412d93f8231484e846162e8cb7d17c-1964955021.us-east-1.elb.amazonaws.com/dashboard?id=java-app
+ceTaskId=AXRIVyK4coQYOk5JOPab
+ceTaskUrl=http://a8412d93f8231484e846162e8cb7d17c-1964955021.us-east-1.elb.amazonaws.com/api/ce/task?id=AXRIVyK4coQYOk5JOPab
