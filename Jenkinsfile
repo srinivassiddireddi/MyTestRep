@@ -19,7 +19,7 @@ pipeline{
         }
         stage ('Sonarcube evalution'){
             steps {
-                sh 'mvn sonar:sonar -Dsonar.projectKey=java-app -Dsonar.host.url=http://a8412d93f8231484e846162e8cb7d17c-1964955021.us-east-1.elb.amazonaws.com -Dsonar.login=e45ce196bed8022babc604e3eff00956b76b120e'
+                sh 'mvn sonar:sonar -Dsonar.projectKey=java-app -Dsonar.host.url=http://a8412d93f8231484e846162e8cb7d17c-1964955021.us-east-1.elb.amazonaws.com -Dsonar.login=7291a2e1b6303bf08a59d5c084badc07c4e4614a'
             }
         }
         stage ('upload artifactory') {
