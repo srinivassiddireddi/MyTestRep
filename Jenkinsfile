@@ -52,10 +52,12 @@ pipeline{
         }
         stage ('Deploy to kubernetes'){
             steps{
+                git credentialsId: 'new-git', url: 'http://gitlab.stonehome.in/root/kuberenetes-files.git'
                 sh '''
+                ls
                 aws eks update-kubeconfig --name myeks
-                kubectl apply -f java-dp.yaml
-                kubectl apply -f java-service.yaml
+                kubectl apply -f java-app/java-dp.yaml
+                kubectl apply -f java-app/java-service.yaml
                 '''
             }
         }
