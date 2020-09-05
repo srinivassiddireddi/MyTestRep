@@ -55,7 +55,7 @@ pipeline{
                 sh '''
                 aws eks update-kubeconfig --name myeks
                 kubectl apply -f java-dp.yaml
-                kubectl apply -f java-sv.yaml
+                kubectl apply -f java-service.yaml
                 '''
             }
         }
