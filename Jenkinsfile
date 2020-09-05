@@ -43,11 +43,11 @@ pipeline{
         }
         stage ('Uplod to ECR') {
             steps{
-                sh """
+                sh '''
                 $(aws ecr get-login --region us-east-1 --no-include-email)
                 docker tag java-app:latest 558607277863.dkr.ecr.us-east-1.amazonaws.com/java-app:latest
                 docker push 558607277863.dkr.ecr.us-east-1.amazonaws.com/java-app:latest
-                """
+                '''
             }
         }
         stage ('Deploy to kubernetes'){
