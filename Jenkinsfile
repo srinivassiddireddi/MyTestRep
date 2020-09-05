@@ -22,7 +22,7 @@ pipeline{
                 sh 'mvn sonar:sonar -Dsonar.projectKey=java-app -Dsonar.host.url=http://a8412d93f8231484e846162e8cb7d17c-1964955021.us-east-1.elb.amazonaws.com -Dsonar.login=ea55bbe28c291adde5e39d2d2a511a516baadf24'
             }
         }
-        stage ('upload artifactory') {
+        stage ('Upload artifactory') {
              steps {
                  script { 
                  def server = Artifactory.server 'jfrog'
@@ -36,9 +36,26 @@ pipeline{
                }
              }
         }
-        stage ('docker build') {
+        stage ('Docker build') {
             steps {
                 sh 'docker build -t java-pro .'
+            }
+        }
+        stage ('Uplod to ECR') {
+            steps{
+                sh """
+                $(aws ecr get-login --region us-east-1 --no-include-email)
+                docker tag java-app:latest 558607277863.dkr.ecr.us-east-1.amazonaws.com/java-app:latest
+                docker push 558607277863.dkr.ecr.us-east-1.amazonaws.com/java-app:latest
+                """
+            }
+        }
+        stage ('Deploy to kubernetes'){
+            steps{
+                sh '''
+                kubectl apply -f java-dp.yaml
+                kubectl apply -f java-sv.yaml
+                '''
             }
         }
         
