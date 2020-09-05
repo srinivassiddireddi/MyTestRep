@@ -53,6 +53,7 @@ pipeline{
         stage ('Deploy to kubernetes'){
             steps{
                 sh '''
+                aws eks update-kubeconfig --name myeks
                 kubectl apply -f java-dp.yaml
                 kubectl apply -f java-sv.yaml
                 '''
