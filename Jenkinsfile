@@ -11,7 +11,7 @@ pipeline{
                 sh 'mvn install'
             }
         }
-        stage ('Test Java COde') {
+        stage ('Test Java COde_New') {
             steps {
                 sh 'mvn test'
             }
